@@ -1,0 +1,38 @@
+name: chem-learning
+
+channels:
+  - conda-forge   # rdkit lives here — always prefer conda-forge for chemistry packages
+  - defaults
+
+dependencies:
+  # ── Python ────────────────────────────────────────────────────────────────
+  - python=3.10
+
+  # ── Core science stack ────────────────────────────────────────────────────
+  - numpy>=1.24
+  - pandas>=2.0
+  - matplotlib>=3.7
+  - seaborn>=0.12         # nicer statistical plots
+
+  # ── Cheminformatics ───────────────────────────────────────────────────────
+  - rdkit>=2023.03        # ALWAYS install rdkit via conda-forge, NOT pip
+                          # pip-installed rdkit can have broken C++ dependencies
+
+  # ── Machine learning ──────────────────────────────────────────────────────
+  - scikit-learn>=1.3
+  - scipy>=1.11
+
+  # ── Jupyter ───────────────────────────────────────────────────────────────
+  - jupyter
+  - jupyterlab>=4.0       # modern Jupyter UI
+  - ipykernel             # registers the env as a Jupyter kernel
+  - ipywidgets            # interactive widgets in notebooks
+
+  # ── Code quality (optional but good habit) ────────────────────────────────
+  - black                 # code formatter
+  - pip                   # for anything not on conda-forge
+
+  - pip:
+    # molplotly is a nice bonus for interactive molecule visualization
+    # install via pip since it's not on conda-forge
+    - molplotly>=1.1.4
